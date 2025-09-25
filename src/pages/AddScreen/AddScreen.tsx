@@ -11,15 +11,22 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 type itemList = {
   id: number;
   title: string;
+  piece?: string;
 };
 export const AddScreen = () => {
   const [title, setTitle] = useState('');
   const [detailTitle, setDetailTitle] = useState('');
+  const [pieceTitle, setPieceTitle] = useState('');
   const [editId, setEditId] = useState<number | null>(null);
   const [editDetail, setEditDetail] = useState('');
   const navigation = useNavigation();
   const [data, setData] = useState<itemList[]>([]);
 
+  const handleChange = text => {
+    // Allow only numbers
+    const numericValue = text.replace(/[^0-9]/g, '');
+    setPieceTitle(numericValue);
+  };
   const addTask = async () => {
     if (title.trim() === '') {
       Alert.alert('Uyarı', 'Lütfen Başlığı doldurunuz.');
@@ -35,6 +42,7 @@ export const AddScreen = () => {
         id: Date.now(),
         title: title,
         detail: detailTitle,
+        piece: pieceTitle,
       };
 
       parsedData.push(newTask);
@@ -42,6 +50,7 @@ export const AddScreen = () => {
 
       setTitle('');
       setDetailTitle('');
+      setPieceTitle('');
 
       navigation.goBack();
     } catch (e) {
@@ -64,10 +73,17 @@ export const AddScreen = () => {
           selectionColor={'#8B8787'}></TextInput>
         <TextInput
           style={styles.detailTextInput}
-          placeholder={'Detail'}
+          placeholder={'Konum'}
           value={detailTitle}
           onChangeText={setDetailTitle}
           selectionColor={'#8B8787'}></TextInput>
+        <TextInput
+          style={styles.piecesTextInput}
+          placeholder={'Adet'}
+          value={pieceTitle}
+          onChangeText={handleChange}
+          selectionColor={'#8B8787'}
+          keyboardType="numeric"></TextInput>
       </View>
       <TouchableOpacity style={styles.addButton} onPress={addTask}>
         <Text style={styles.addButtonText}>ADD</Text>

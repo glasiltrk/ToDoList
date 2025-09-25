@@ -6,10 +6,13 @@ import Icon, {IconType} from 'react-native-dynamic-vector-icons';
 export const ToDoCard = ({
   title,
   detail,
+  piece,
   editOnPress,
   deleteOnPress,
   doneOnPress,
   isCompleted,
+  isIncreaseOnPress,
+  isDecreaseOnPress,
 }) => {
   return (
     <View style={styles.container}>
@@ -20,10 +23,13 @@ export const ToDoCard = ({
         <Text style={styles.taskDetail} numberOfLines={2} ellipsizeMode="tail">
           {detail}
         </Text>
+        <Text style={styles.taskPiece} numberOfLines={1} ellipsizeMode="tail">
+          {piece}
+        </Text>
       </View>
-      <View style={styles.iconContainer}>
-        {editOnPress && (
-          <TouchableOpacity onPress={editOnPress}>
+      <View style={styles.IconContainer}>
+        <View style={styles.topRowIcons}>
+          <TouchableOpacity style={{top: 3}} onPress={editOnPress}>
             <Icon
               name="edit-2"
               size={20}
@@ -31,27 +37,42 @@ export const ToDoCard = ({
               color="#B3B7EE"
             />
           </TouchableOpacity>
-        )}
+          <TouchableOpacity onPress={deleteOnPress}>
+            <Icon
+              name="trash-can-outline"
+              size={25}
+              type={IconType.MaterialCommunityIcons}
+              color="#B3B7EE"
+            />
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={deleteOnPress}>
+          {/* <TouchableOpacity onPress={doneOnPress}>
           <Icon
-            name="trash-can-outline"
-            size={25}
-            type={IconType.MaterialCommunityIcons}
+            name="checkcircleo"
+            size={20}
+            type={IconType.AntDesign}
             color="#B3B7EE"
           />
-        </TouchableOpacity>
-
-        {doneOnPress && (
-          <TouchableOpacity onPress={doneOnPress}>
+        </TouchableOpacity> */}
+        </View>
+        <View style={styles.bottomRowIcons}>
+          <TouchableOpacity onPress={isIncreaseOnPress}>
             <Icon
-              name="checkcircleo"
-              size={20}
+              name="plus"
+              size={25}
               type={IconType.AntDesign}
               color="#B3B7EE"
             />
           </TouchableOpacity>
-        )}
+          <TouchableOpacity onPress={isDecreaseOnPress}>
+            <Icon
+              name="minus"
+              size={25}
+              type={IconType.AntDesign}
+              color="#B3B7EE"
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

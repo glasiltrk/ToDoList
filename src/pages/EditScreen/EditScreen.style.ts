@@ -18,6 +18,13 @@ export default StyleSheet.create({
     marginVertical: 10,
     fontSize: 15,
   },
+  piecesTextInput: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#8B8787',
+    paddingVertical: 5,
+    marginVertical: 10,
+    fontSize: 15,
+  },
   EditButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',

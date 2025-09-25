@@ -22,11 +22,29 @@ export default StyleSheet.create({
     fontSize: 13,
     marginTop: 3,
     width: 200,
+    fontWeight: 'bold',
+
+    color: 'grey',
   },
-  iconContainer: {
+  taskPiece: {
+    fontSize: 13,
+    marginTop: 3,
+    width: 200,
+    color: 'black',
+  },
+  IconContainer: {
+    // backgroundColor: 'red',
+    alignItems: 'flex-end',
+    gap: 10,
+  },
+  topRowIcons: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     gap: 10,
-    alignItems: 'center',
+  },
+  bottomRowIcons: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    gap: 10,
   },
 });

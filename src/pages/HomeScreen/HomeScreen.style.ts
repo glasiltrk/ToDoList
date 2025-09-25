@@ -30,4 +30,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 5,
   },
+  searchText: {
+    backgroundColor: 'white',
+    height: 50,
+    marginTop: 20,
+    marginHorizontal: 5,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
 });

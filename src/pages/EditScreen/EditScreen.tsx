@@ -14,7 +14,12 @@ export const EditScreen = () => {
 
   const [editTitle, setEditTitle] = useState(item.title);
   const [editDetail, setEditDetail] = useState(item.detail);
-  const [editId, setEditId] = useState([]);
+  const [pieceTitle, setPieceTitle] = useState(item.piece);
+  const handleChange = text => {
+    // Allow only numbers
+    const numericValue = text.replace(/[^0-9]/g, '');
+    setPieceTitle(numericValue);
+  };
   const editTask = async () => {
     if (editTitle.trim() === '') {
       Alert.alert('Uyarı', 'Lütfen Başlığı doldurunuz.');
@@ -32,6 +37,7 @@ export const EditScreen = () => {
             ...task,
             title: editTitle,
             detail: editDetail,
+            piece: pieceTitle,
           };
         }
         return task;
@@ -59,14 +65,21 @@ export const EditScreen = () => {
       <View style={styles.Inputs}>
         <TextInput
           style={styles.titleTextInput}
-          placeholder="Title"
+          placeholder="Başlık"
           value={editTitle}
           onChangeText={setEditTitle}></TextInput>
         <TextInput
           style={styles.detailTextInput}
-          placeholder="Detail"
+          placeholder="Konum"
           value={editDetail}
           onChangeText={setEditDetail}></TextInput>
+
+        <TextInput
+          style={styles.piecesTextInput}
+          placeholder={'Adet'}
+          value={pieceTitle}
+          onChangeText={handleChange}
+          keyboardType="numeric"></TextInput>
       </View>
       <View style={styles.EditButtons}>
         <TouchableOpacity style={styles.editButton} onPress={editTask}>

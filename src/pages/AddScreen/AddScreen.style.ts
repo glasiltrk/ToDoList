@@ -12,10 +12,17 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#8B8787',
     paddingVertical: 5,
-    marginVertical: 20,
+    marginVertical: 10,
     fontSize: 15,
   },
   detailTextInput: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#8B8787',
+    marginVertical: 10,
+    paddingVertical: 5,
+    fontSize: 15,
+  },
+  piecesTextInput: {
     borderBottomWidth: 1,
     borderBottomColor: '#8B8787',
     paddingVertical: 5,
